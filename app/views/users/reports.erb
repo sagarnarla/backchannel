@@ -1,0 +1,20 @@
+<h1>Reports</h1>
+
+<table border="1">
+  <tr>
+    <td>Post</td>
+    <td>Number of comments</td>
+    <td>Number of votes</td>
+  </tr>
+  <% @posts.each do |post| %>
+     <tr>
+       <td><%= post['content'] %></td>
+       <td><%= post['no_of_votes'] %></td>
+       <td><%= post['no_of_comments'] %></td>
+     </tr>
+  <%end%>
+
+</table>
+
+
+<%= link_to 'Back', users_url %>

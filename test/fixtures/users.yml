@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  username: varun
+  password: abcd
+  user_type: admin
+  nickname: varunn
+
+two:
+  username: manju
+  password: 1234
+  user_type: admin
+  nickname: manju
+
+three:
+  username: manjiri
+  password: abcd
+  user_type: admin
+  nickname: manj
+
+four:
+ username: akash
+ password: 1234
+ user_type: user
+ nickname: akki

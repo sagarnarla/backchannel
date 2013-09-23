@@ -1,0 +1,10 @@
+<h1>Search Results</h1>
+Search keyword : <%= @keyword %>
+<div>
+<br>
+<table>
+    <% @results.each do |result| %>
+        <tr><td><%=result  %></td></tr>
+    <% end %>
+</table>
+</div>

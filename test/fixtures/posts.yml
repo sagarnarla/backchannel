@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: postcontent1
+  user: 1
+  category: 1
+two:
+ content: postcontent2
+ user: 3
+ category: 3
+
+three:
+  content: postcontent3
+  user: 3
+  category: 3

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Content:</b>
+  <%= @post.content %>
+</p>
+
+<div>
+  <span style="color:red">Votes</span><br>
+   <% display_votes_url =  votes_url << "?type=post&post_id=#{@post.id}"%>
+  <%if @has_user_voted_for_this_post%>
+        <a href="<%= display_votes_url%>">You and <%= @votes_for_post - 1%> other people voted</a>
+  <% else %>
+      <a href="<%=display_votes_url%>"><%= @votes_for_post%>  people voted</a>
+  <% end %>
+  <br>
+  <% if @can_user_vote_for_post %>
+    <%= link_to 'Vote', new_vote_url<<"?type=post&post_id=#{@post.id}" %>
+  <% end %>
+</div>
+<br>
+<span style="color:red">Comments</span>
+<br>
+
+<table border="1">
+  <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment['content'] %></td>
+        <td>by <%= comment['nickname'] %></td>
+        <% display_votes_url =  votes_url << "?type=comment&comment_id=#{comment['comment_id']}"%>
+        <td><% if !comment['has_user_voted_for_this_comment'] %><a href="<%= display_votes_url%>"><%= comment['votes_for_comment'] %> people voted</a><% else %><a href="<%= display_votes_url%>">You and <%= comment['votes_for_comment'] -1 %> other people voted</a><%end%></td>
+        <td><% if comment['can_user_vote_for_comment'] %>
+            <%= link_to 'Vote', new_vote_url<<"?post_id=#{@post.id}&type=comment&comment_id=#{comment['comment_id']}" %>
+          <% end %></td>
+        <td><% if session[:user_id] == comment['user_id'] %><a href=<%= edit_comment_url(comment['comment_obj']) %>>Edit Comment</a><% end %></td>
+        <td><% if session[:user].user_type == "admin" || session[:user_id] == comment['user_id'] %><a href=<%= "/comments/#{comment['comment_id']}?post_id=#{@post.id}"%> data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete Comment</a><% end %></td>
+        <!--<td><%= comment['created_date'] %></td>-->
+      </tr>
+      <tr></tr>
+  <% end %>
+</table>
+<br>
+
+<br>
+
+<%= link_to 'Create Comment', new_comment_url %>
+<br >
+<br>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

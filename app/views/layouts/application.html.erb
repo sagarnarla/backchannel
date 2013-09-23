@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BackChannelApp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<form action="/users/search">
+  <div class="field">
+   <input type="text" name="keyword" value="<%= @keyword%>"/>
+
+  By User<input type="radio" name="type" value="user" <%if @type=="user"%>checked="checked" <%end%> >
+  By Category<input type="radio" name="type" value="category" <%if @type=="category"%>checked="checked" <%end%>>
+  By Content<input type="radio" name="type" value="content" <%if @type=="content"%>checked="checked" <%end%>>
+  </div>
+  <input type="submit" value="Search" />
+
+  </form>
+
+
+<%= yield %>
+
+<a href="/">Homepage</a>
+<% if session[:user_id] %>
+<a href="/users/logout">Logout</a>
+<% end %>
+
+</body>
+</html>

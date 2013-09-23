@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: fall 2013
+  user: 1
+two:
+  name: fall 2011
+  user: 1
+three:
+  name: fall 2010
+  user: 1
+four:
+  name: fall 2009
+  user: 1
+five:
+  name: fall 2008
+  user: 1
